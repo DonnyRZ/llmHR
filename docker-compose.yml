@@ -1,0 +1,51 @@
+version: '3.8' # Specify compose file version
+
+services:
+  # --- Backend Service Definition ---
+  backend:
+    build: ./backend # Tells Compose to build using the Dockerfile in the ./backend directory
+    container_name: chatbot-hr-backend # A friendly name for the backend container
+    environment:
+      # --- CRITICAL: Configure Ollama Endpoint ---
+      # Option 1: If Ollama runs directly on the HOST Linux machine (Recommended for simplicity)
+      # Use host.docker.internal for Docker Desktop on Linux/Mac/Win.
+      # If that fails on your Linux setup, replace 'host.docker.internal'
+      # with the actual IP address of your Linux host machine (e.g., 192.168.1.100).
+      - OLLAMA_ENDPOINT=http://host.docker.internal:11434
+
+      # Option 2: If you run Ollama in *another* Docker container named 'ollama' (More advanced setup)
+      # - OLLAMA_ENDPOINT=http://ollama:11434
+
+      # Add any other environment variables your app.py might need from a .env file here
+      # Example: - MY_API_KEY=abcdef12345
+    ports:
+      # Map port 8000 on your HOST machine to port 8000 in the CONTAINER
+      # Format: "HOST_PORT:CONTAINER_PORT"
+      - "8000:8000"
+    # volumes: # Optional: Uncomment for development ONLY to see code changes live without rebuilding.
+              # Keep commented out when deploying to the Linux machine for a stable build.
+    #   - ./backend:/app
+    networks:
+      - chatbot-network # Connect this service to the custom network defined below
+
+  # --- Frontend Service Definition ---
+  frontend:
+    build: ./frontend # Tells Compose to build using the Dockerfile in the ./frontend directory
+    container_name: chatbot-hr-frontend # A friendly name for the frontend container
+    ports:
+      # Map port 8080 on your HOST machine to port 80 (Nginx default) in the CONTAINER
+      # You will access the frontend via http://<your-linux-ip>:8080
+      - "8080:80"
+    depends_on:
+      # Tells Compose to start the backend container before starting the frontend.
+      # Note: This doesn't guarantee the backend *application* is fully ready, just that the container started.
+      - backend
+    networks:
+      - chatbot-network # Connect this service to the custom network
+
+# --- Network Definition ---
+# Define a custom bridge network for the services to communicate if needed.
+# This provides better isolation than the default bridge network.
+networks:
+  chatbot-network:
+    driver: bridge

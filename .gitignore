@@ -1,0 +1,27 @@
+# Python Virtual Environment
+backend/venv/
+venv/
+**/venv/
+
+# Python Cache
+__pycache__/
+**/__pycache__/
+*.py[cod]
+
+# Environment variables file
+.env
+**/.env
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# IDE files (optional but common)
+.vscode/
+.idea/
+*.suo
+*.user
+*.sln.docstates
+
+# Docker build cache (less critical to ignore, but can)
+# /.docker/

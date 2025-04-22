@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT Steradian Data Optima Chatbot</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Adding an icon library for potential future use (like copy button) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="chat-container">
+        <header class="chat-header">
+            <img src="images/logo.png" alt="Steradian Data Optima Logo" class="logo">
+        </header>
+
+        <div class="chatbox" id="chatbox">
+            <!-- Messages will be added dynamically with timestamps -->
+            <!-- Example initial bot message structure (JS will create this format) -->
+            <!--
+            <div class="message bot-message message-enter">
+                <div class="message-content">
+                    <p>Hello! How can I assist you with HR tasks today?</p>
+                </div>
+                <div class="message-meta">
+                    <span class="timestamp">10:30 AM</span>
+                </div>
+            </div>
+             -->
+        </div>
+
+        <form class="message-form" id="message-form">
+            <input type="text" id="userInput" placeholder="Type your message here..." autocomplete="off" aria-label="Chat input">
+            <button type="submit" id="sendButton" aria-label="Send Message">
+                <!-- Using FontAwesome icon for send -->
+                <i class="fa-solid fa-paper-plane"></i>
+                <!-- SVG fallback (kept commented in case needed) -->
+                <!-- <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24">
+                    <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
+                </svg> -->
+            </button>
+        </form>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
