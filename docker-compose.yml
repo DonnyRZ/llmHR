@@ -11,7 +11,7 @@ services:
       # Use host.docker.internal for Docker Desktop on Linux/Mac/Win.
       # If that fails on your Linux setup, replace 'host.docker.internal'
       # with the actual IP address of your Linux host machine (e.g., 192.168.1.100).
-      - OLLAMA_ENDPOINT=http://host.docker.internal:11434
+      - OLLAMA_ENDPOINT=http://172.17.0.1:11434
 
       # Option 2: If you run Ollama in *another* Docker container named 'ollama' (More advanced setup)
       # - OLLAMA_ENDPOINT=http://ollama:11434

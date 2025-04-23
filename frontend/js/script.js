@@ -6,7 +6,7 @@ const sendButton = document.getElementById('sendButton');
 
 // --- Configuration ---
 // URL of your backend API endpoint
-const API_URL = 'http://127.0.0.1:8000/api/chat'; // Make sure this matches where your backend is running
+const API_URL = 'http://192.168.99.152:8000/api/chat'; // Make sure this matches where your backend is running
 
 // --- Helper Functions ---
 
